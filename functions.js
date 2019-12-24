@@ -1,10 +1,11 @@
+"use strict";
+
 // Fetch existing todos from localStorage
 const getSavedTodos = () => {
   const todosJSON = localStorage.getItem("todos");
-
-  if (todosJSON !== null) {
-    return JSON.parse(todosJSON);
-  } else {
+  try {
+    return todosJSON ? JSON.parse(todosJSON) : [];
+  } catch (e) {
     return [];
   }
 };
@@ -31,7 +32,7 @@ const toggleTodo = id => {
     return todo.id === id;
   });
 
-  if (todo !== undefined) {
+  if (todo) {
     todo.completed = !todo.completed;
   }
 };
