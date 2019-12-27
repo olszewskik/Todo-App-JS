@@ -54,14 +54,22 @@ const renderTodoList = (todos, filters) => {
     .querySelector("#todosList")
     .appendChild(generateSummaryDOM(incompleteTodos));
 
-  filteredTodos.forEach(todo => {
-    document.querySelector("#todosList").appendChild(generateTodoDOM(todo));
-  });
+  if (filteredTodos.length > 0) {
+    filteredTodos.forEach(todo => {
+      document.querySelector("#todosList").appendChild(generateTodoDOM(todo));
+    });
+  } else {
+    const messageElement = document.createElement("p");
+    messageElement.classList.add("empty-message");
+    messageElement.textContent = "No to-dos to show";
+    document.querySelector("#todosList").appendChild(messageElement);
+  }
 };
 
 // Get the DOM element for an individual note
 const generateTodoDOM = todo => {
-  const todoElement = document.createElement("div");
+  const todoElement = document.createElement("label");
+  const containerElement = document.createElement("div");
   const checkbox = document.createElement("input");
   const todoText = document.createElement("span");
   const removeButton = document.createElement("button");
@@ -69,7 +77,7 @@ const generateTodoDOM = todo => {
   // Setup todo checkbox
   checkbox.setAttribute("type", "checkbox");
   checkbox.checked = todo.completed;
-  todoElement.appendChild(checkbox);
+  containerElement.appendChild(checkbox);
   checkbox.addEventListener("change", () => {
     toggleTodo(todo.id);
     saveTodos(todos);
@@ -78,10 +86,16 @@ const generateTodoDOM = todo => {
 
   // Setup the todo text
   todoText.textContent = todo.text;
-  todoElement.appendChild(todoText);
+  containerElement.appendChild(todoText);
+
+  // Setup container
+  todoElement.classList.add("list-item");
+  containerElement.classList.add("list-item__container");
+  todoElement.appendChild(containerElement);
 
   // Setup the remove button
-  removeButton.textContent = "x";
+  removeButton.textContent = "remove";
+  removeButton.classList.add("button", "button--text");
   todoElement.appendChild(removeButton);
   removeButton.addEventListener("click", () => {
     removeTodo(todo.id);
@@ -94,7 +108,9 @@ const generateTodoDOM = todo => {
 
 // Get the DOM elements for list summary
 const generateSummaryDOM = incompleteTodos => {
-  const summary = document.createElement("h3");
-  summary.textContent = `You have ${incompleteTodos.length} todos left`;
+  const summary = document.createElement("h2");
+  const plural = incompleteTodos.length === 1 ? "" : "s";
+  summary.classList.add("list-title");
+  summary.textContent = `You have ${incompleteTodos.length} todo${plural} left`;
   return summary;
 };

@@ -4,17 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="/style/style.css" rel="stylesheet" />
     <title>Todo App</title>
   </head>
   <body>
-    <h1>Todo App</h1>
-    <input id="searchText" type="text" placeholder="Filter todos" />
-    <label> <input id="hideCompleted" type="checkbox" />Hide completed </label>
-    <div id="todosList"></div>
-    <form id="addTodoForm">
-      <input type="text" placeholder="Add new todo" name="todoText" />
-      <button>Add</button>
-    </form>
+    <div class="header">
+      <div class="container">
+        <h1 class="header__title">Todo App</h1>
+        <h2 class="header__subtitle">What do you need to do?</h2>
+      </div>
+    </div>
+
+    <div class="actions">
+      <div class="actions__container">
+        <input
+          id="searchText"
+          class="input"
+          type="text"
+          placeholder="Filter todos"
+        />
+        <label class="checkbox">
+          <input id="hideCompleted" type="checkbox" />Hide completed
+        </label>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="todosList"></div>
+      <form id="addTodoForm">
+        <input
+          type="text"
+          class="input"
+          placeholder="Add new todo"
+          name="todoText"
+        />
+        <button class="button">Add</button>
+      </form>
+    </div>
+
     <script src="/scripts/uuidv4.js"></script>
     <script src="/scripts/functions.js"></script>
     <script src="/scripts/app.js"></script>
