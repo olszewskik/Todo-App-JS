@@ -1,0 +1,33 @@
+{
+  "name": "todoapp",
+  "version": "1.0.0",
+  "description": "To-do application",
+  "main": "index.js",
+  "scripts": {
+    "dev-server": "webpack-dev-server --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olszewskik/Todo-App-JS.git"
+  },
+  "author": "kamil.web@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olszewskik/Todo-App-JS/issues"
+  },
+  "homepage": "https://github.com/olszewskik/Todo-App-JS#readme",
+  "dependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/polyfill": "^7.7.0",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/register": "^7.7.7",
+    "babel-loader": "^8.0.6",
+    "live-server": "^1.2.1",
+    "uuid": "^3.3.3",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  }
+}
